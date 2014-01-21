@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:include schemaLocation="../ConfigHeader.xsd" />
+  <xs:element name="vos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="VersionDB">
+          <xs:annotation>
+            <xs:appinfo>
+              <table>is_version_db</table>
+              <id>ver_id</id>
+              <timestamp>ver_date</timestamp>
+              <sequence>is_version_db_seq</sequence>
+              <sort>
+                <item>ver_version</item>
+                <sort>DESCENDING</sort>
+              </sort>
+            </xs:appinfo>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ver_id" type="java.lang.Long">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <dbname>pk_is_version_db</dbname>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="ver_label" type="java.lang.String">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <list>true</list>
+                    <dbname>label</dbname>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="ver_version" type="java.lang.Long">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <list>true</list>
+                    <dbname>version</dbname>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="ver_compatibilite" type="java.lang.Long">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <list>true</list>
+                    <dbname>compatibilite</dbname>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="ver_description" type="java.lang.String">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <list>true</list>
+                    <dbname>description</dbname>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="ver_date" type="java.sql.Timestamp">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <list>true</list>
+                    <dbname>execution_date</dbname>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+

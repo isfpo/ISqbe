@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="menu.xsd">
+	<node secuName="sec Dossier">
+		<node-type>Root</node-type>
+		<display-name>Menu_Item_Secretaire</display-name>
+	  <node secuName="sec Nouveau dossier">
+		<node-type>Admin</node-type>
+		<display-name>Menu_Item_Dossier_Sec_New</display-name>	
+		<action>
+			<action-type>new</action-type>
+			<action-object-name>Dossier</action-object-name>
+		</action>
+	  </node>
+	  <node secuName="sec Lettres">
+		<node-type>Admin</node-type>
+		<display-name>Menu_Item_Dossier_Sec_Lettre</display-name>	
+		<action>
+			<action-type>querysearch</action-type>
+			<action-object-name>Dossier</action-object-name>
+			<action-param>
+	        	<param-field>dossier_courier_pret_search</param-field>
+	        	<param-value>true</param-value>
+	        </action-param>
+		</action>
+	  </node>
+	  <node secuName="sec Formulaire de pose">
+		<node-type>Admin</node-type>
+		<display-name>Menu_Item_Dossier_Sec_Pose</display-name>	
+		<action>
+			<action-type>querysearch</action-type>
+			<action-object-name>Dossier</action-object-name>
+	        <action-param>
+	        	<param-field>menu_name</param-field>
+	        	<param-value>Menu_Item_Dossier_Sec_Pose</param-value>
+	        </action-param>
+		</action>
+	  </node>
+	  <node secuName="sec Procedure de recours">
+		<node-type>Admin</node-type>
+		<display-name>Menu_Item_Dossier_Sec_Recours</display-name>	
+		<action>
+			<action-type>querysearch</action-type>
+			<action-object-name>Dossier</action-object-name>
+			<action-param>
+	        	<param-field>menu_name</param-field>
+	        	<param-value>Menu_Item_Dossier_Sec_Recours</param-value>
+	        </action-param>
+		</action>
+	  </node>
+	  <node secuName="sec Recherche dossier">
+		<node-type>Admin</node-type>
+		<display-name>Menu_Item_Dossier_Sec_Search</display-name>	
+		<action>
+			<action-type>querysearch</action-type>
+			<action-object-name>Dossier</action-object-name>
+		</action>
+	  </node>
+	</node> <!-- Fin secrétaire -->
+	
+	<node secuName="insp Dossier">
+		<node-type>Root</node-type>
+		<display-name>Menu_Item_Inspecteur</display-name>
+		<node secuName="insp Mesure a saisir">
+			<node-type>Admin</node-type>
+			<display-name>Menu_Item_Dossier_Insp_MesureASaisir</display-name>	
+			<action>
+				<action-type>querysearch</action-type>
+				<action-object-name>Dossier</action-object-name>
+				<action-param>
+	        		<param-field>dossier_statut_code</param-field>
+	        		<param-value>1</param-value>
+	       		 </action-param>
+			</action>
+	  	</node>  
+		<node secuName="insp En attente de verification">
+			<node-type>Admin</node-type>
+			<display-name>Menu_Item_Dossier_Insp_Verification</display-name>	
+			<action>
+				<action-type>querysearch</action-type>
+				<action-object-name>Dossier</action-object-name>
+				<action-param>
+	        		<param-field>menu_name</param-field>
+	        		<param-value>Menu_Item_Dossier_Insp_Verification</param-value>
+	       		</action-param>
+			</action>
+	  	</node>  
+		<node secuName="insp Recherche dossier">
+			<node-type>Admin</node-type>
+			<display-name>Menu_Item_Dossier_Insp_Search</display-name>	
+			<action>
+				<action-type>querysearch</action-type>
+				<action-object-name>Dossier</action-object-name>
+			</action>
+	  </node>  
+	</node><!-- Fin inspecteur -->
+	
+	<node secuName="ccc Dossier">
+		<node-type>Root</node-type>
+		<display-name>Menu_Item_CCC</display-name>
+		<node secuName="ccc Dossier a traiter">
+			<node-type>Admin</node-type>
+			<display-name>Menu_Item_Dossier_CCC</display-name>	
+			<action>
+				<action-type>querysearch</action-type>
+				<action-object-name>Dossier</action-object-name>
+				<action-param>
+	        		<param-field>menu_name</param-field>
+	        		<param-value>Menu_Item_Dossier_CCC</param-value>
+	        	</action-param>
+			</action>
+	  	</node>  
+	</node><!-- Fin ccc -->
+	
+	<node secuName="pub Dossier">
+		<node-type>Root</node-type>
+		<display-name>Menu_Item_Public</display-name>
+		<node secuName="pub Recherche dossier">
+			<node-type>Admin</node-type>
+			<display-name>Menu_Item_Dossier_Public</display-name>	
+			<action>
+				<action-type>querysearch</action-type>
+				<action-object-name>Dossier</action-object-name>
+				<action-param>
+	        		<param-field>menu_name</param-field>
+	        		<param-value>Menu_Item_Dossier_Public</param-value>
+	        	</action-param>
+			</action>
+	  	</node>  
+	</node><!-- Fin dossier -->
+	
+	<node secuName="ges Dossier">
+		<node-type>Root</node-type>
+		<display-name>Menu_Item_gestion</display-name>
+		<node secuName="ges OSR Signal">
+			<node-type>Admin</node-type>
+			<display-name>Menu_Item_Osr_signal</display-name>	
+			<action>
+				<action-type>querysearch</action-type>
+				<action-object-name>Osr_signal</action-object-name>
+			</action>
+	  	</node>
+	  	<node secuName="ges Commune">
+			<node-type>Admin</node-type>
+			<display-name>Menu_Item_Commune</display-name>	
+			<action>
+				<action-type>querysearch</action-type>
+				<action-object-name>Commune</action-object-name>
+			</action>
+	  	</node>  
+	  	<node secuName="ges Codedvalues">
+			<node-type>Admin</node-type>
+			<display-name>Menu_Item_Codedvalues</display-name>	
+			<action>
+				<action-type>querysearch</action-type>
+				<action-object-name>Codedvalues</action-object-name>
+			</action>
+	  	</node>    
+	</node>
+	
+</menu>

@@ -1,0 +1,14 @@
+#Name of the driver used  by the plugin to access the database
+database.driver=oracle.jdbc.OracleDriver
+
+#URL of the database used by the plugin
+database.jdbc=jdbc:oracle:thin:@srv-ora10:1521:REGBL
+
+#Database User used by the plugin
+database.user=legal_owner
+
+#Password of the user database used  by the plugin
+database.password=legal_owner
+
+#Schema of the database used  by the plugin
+database.schema=LEGAL_OWNER

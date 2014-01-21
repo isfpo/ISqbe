@@ -1,0 +1,1 @@
+Dossier contenant les scripts SQL pour la création de la structure de la db.

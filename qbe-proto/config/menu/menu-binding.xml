@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping xmlns="http://castor.exolab.org/" xmlns:cst="http://castor.exolab.org/">
+  <description xmlns="">Castor generated mapping file</description>
+  <class name="ch.inser.dynaplus.jsf.menudef.Action">
+    <description xmlns="">Default mapping for class ch.inser.dynaplus.jsf.menudef.Action</description>
+    <map-to />
+    <field name="type" type="java.lang.String">
+      <bind-xml name="action-type" node="element" />
+    </field>
+    <field name="requestFieldName" type="java.lang.String">
+      <bind-xml name="request-field-name" node="element" />
+    </field>
+    <field name="objectName" type="java.lang.String">
+      <bind-xml name="action-object-name" node="element" />
+    </field>
+    <field name="Params" type="ch.inser.dynaplus.jsf.menudef.ActionParam" collection="array">
+      <bind-xml name="action-param" node="element" />
+    </field>
+  </class>
+  <class name="ch.inser.dynaplus.jsf.menudef.ActionParam">
+    <description xmlns="">Default mapping for class ch.inser.dynaplus.jsf.menudef.ActionParam</description>
+    <map-to />
+    <field name="field" type="java.lang.String">
+      <bind-xml name="param-field" node="element" />
+    </field>
+    <field name="value" type="java.lang.String">
+      <bind-xml name="param-value" node="element" />
+    </field>
+  </class>
+  <class name="ch.inser.dynaplus.jsf.menudef.NodesArray">
+    <description xmlns="">Default mapping for class ch.inser.dynaplus.jsf.menudef.NodesArray</description>
+    <map-to xml="menu"/>
+    <field name="nodes" type="ch.inser.dynaplus.jsf.menudef.Node" collection="array">
+      <bind-xml name="nodes" node="element" />
+    </field>
+  </class>
+  <class name="ch.inser.dynaplus.jsf.menudef.Node">
+    <description xmlns="">Default mapping for class ch.inser.dynaplus.jsf.menudef.Node</description>
+    <map-to />
+    <field name="restrictionField" type="java.lang.String">
+      <bind-xml name="restriction-field" node="element" />
+    </field>
+    <field name="name" type="java.lang.String">
+      <bind-xml name="name" node="attribute" />
+    </field>
+    <field name="secuName" type="java.lang.String">
+      <bind-xml name="secuName" node="attribute" />
+    </field>
+    <field name="recursionField" type="java.lang.String">
+      <bind-xml name="recursion-field" node="element" />
+    </field>
+    <field name="action" type="ch.inser.dynaplus.jsf.menudef.Action">
+      <bind-xml name="action" node="element" />
+    </field>
+    <field name="objectName" type="java.lang.String">
+      <bind-xml name="object-name" node="element" />
+    </field>
+    <field name="type" type="java.lang.String">
+      <bind-xml name="node-type" node="element" />
+    </field>
+    <field name="displayName" type="java.lang.String">
+      <bind-xml name="display-name" node="element" />
+    </field>
+    <field name="fieldDisplayName" type="java.lang.String">
+      <bind-xml name="field-display-name" node="element" />
+    </field>
+    <field name="subNodes" type="ch.inser.dynaplus.jsf.menudef.Node" collection="array">
+      <bind-xml name="sub-nodes" node="element" />
+    </field>
+  </class>
+</mapping>

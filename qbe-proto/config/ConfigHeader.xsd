@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:complexType name="java.sql.Array">
+		<xs:annotation>
+			<xs:documentation>java.sql.Array</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:complexType name="java.lang.Long">
+		<xs:annotation>
+			<xs:documentation>java.lang.Long</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:complexType name="java.io.InputStream">
+		<xs:annotation>
+			<xs:documentation>java.io.InputStream</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:complexType name="java.lang.Boolean">
+		<xs:annotation>
+			<xs:documentation>java.lang.Boolean</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:complexType name="java.sql.Blob">
+		<xs:annotation>
+			<xs:documentation>java.sql.Blob</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:complexType name="java.lang.String">
+		<xs:annotation>
+			<xs:documentation>java.lang.String</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:complexType name="java.sql.Clob">
+		<xs:annotation>
+			<xs:documentation>java.sql.Clob</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:complexType name="java.sql.Date">
+		<xs:annotation>
+			<xs:documentation>java.sql.Date</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:complexType name="java.lang.Double">
+		<xs:annotation>
+			<xs:documentation>java.lang.Double</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:complexType name="java.lang.Object">
+		<xs:annotation>
+			<xs:documentation>java.lang.Object</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:complexType name="java.lang.Bytes">
+		<xs:annotation>
+			<xs:documentation>java.lang.Bytes</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<!--<xs:complexType name="java.lang.Byte[]">
+		<xs:annotation>
+			<xs:documentation>java.lang.Byte[]</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>-->
+	<xs:complexType name="java.sql.Timestamp">
+		<xs:annotation>
+			<xs:documentation>java.sql.Timestamp</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:complexType name="java.util.List">
+		<xs:annotation>
+			<xs:documentation>java.util.List</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:complexType name="org.w3c.dom.Document">
+		<xs:annotation>
+			<xs:documentation>org.w3c.dom.Document</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:complexType name="java.util.Map">
+		<xs:annotation>
+			<xs:documentation>java.util.Map</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+</xs:schema>

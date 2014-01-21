@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
+	<Context display-name="qbe-proto" path="/qbe-proto" docBase="qbe-proto">
+	<ResourceLink name="jdbc/qbe-proto" global="jdbc/qbe-proto" type="javax.sql.DataSource"/>
+ </Context>

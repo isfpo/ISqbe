@@ -1,0 +1,17 @@
+                          Application qbe-proto
+                 TEXTE PROJET
+                 ===================================
+
+
+Ce document décrit les changements effectués pour les différentes versions de l'application XXX.
+
+
+=============
+Version 0.0.1
+=============
+build : XXX
+
+- Première installation
+
+
+Inser SA - 2011

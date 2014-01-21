@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<xs:schema id="menu" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="node">
+    <xs:annotation>
+      <xs:documentation>
+        Definition of a node in the treeMenu. A node can be a leaf or an inner node without distinction.
+        The node is displayed in the tree with certain name, this
+        name is construct in the following way (in order of priority):
+        - if (object-name != null AND field-display-name != null)
+          -> The value of the filed given by the field-display-name of the object representing this node
+        - if (display-name != null)
+          -> The value found in the resource file under the key "Menu_Item_"+display-name
+          -> If no value found the value of display-name is used.
+        - ELSE
+          -> The value found in the resource file under the key "Menu_Item_"+name
+          -> If no value found the value of name is used.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+    	<xs:sequence>
+    		<xs:element name="node-type" type="xs:string"
+    			minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>
+    					It is used to define the type in the treeMenu
+    					component to define some specific behavior,
+    					inclusive the specific icons.
+    				</xs:documentation>
+    			</xs:annotation>
+    		</xs:element>
+    		<xs:element name="display-name" type="xs:string"
+    			minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>
+    					Name used to display the node, see documentation
+    					of node tag.
+    				</xs:documentation>
+    			</xs:annotation>
+    		</xs:element>
+    		<xs:element name="field-display-name" type="xs:string"
+    			minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>
+    					Name of the field to use for display purpose if
+    					the node is defined through a business object.
+    					See documentation of node tag.
+    				</xs:documentation>
+    			</xs:annotation>
+    		</xs:element>
+    		<xs:element name="object-name" type="xs:string"
+    			minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>
+    					Name of the business object if the node defined
+    					is based on a business object
+    				</xs:documentation>
+    			</xs:annotation>
+    		</xs:element>
+    		<xs:element name="recursion-field" type="xs:string"
+    			minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>
+    					Field name to apply the recursion if any, the
+    					request for the recursion will be the following:
+    					- recursion-field = business object ID
+    				</xs:documentation>
+    			</xs:annotation>
+    		</xs:element>
+    		<xs:element name="restriction-field" type="xs:string"
+    			minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>
+    					Field name to apply the restriction if any, the
+    					request for the recursion will be the following:
+    					- restriction-field = parent business object ID
+    				</xs:documentation>
+    			</xs:annotation>
+    		</xs:element>
+    		<xs:element name="action" minOccurs="0">
+    			<xs:annotation>
+    				<xs:documentation>
+    					Definition of the action behind the node.
+    				</xs:documentation>
+    			</xs:annotation>
+    			<xs:complexType>
+    				<xs:sequence>
+    					<xs:element name="action-type" type="xs:string"
+    						minOccurs="0">
+    						<xs:annotation>
+    							<xs:documentation>
+    								Type of action query(show the search
+    								mask), search(execute a defined
+    								search and show result), consult
+    								(show a defined record), querysearch
+    								(show the searchlist mask).
+    							</xs:documentation>
+    						</xs:annotation>
+    					</xs:element>
+    					<xs:element name="action-object-name"
+    						type="xs:string" minOccurs="0">
+    						<xs:annotation>
+    							<xs:documentation>
+    								Name of the business object on which
+    								the action take place.
+    							</xs:documentation>
+    						</xs:annotation>
+    					</xs:element>
+    					<xs:element name="request-field-name"
+    						type="xs:string" minOccurs="0">
+    						<xs:annotation>
+    							<xs:documentation>
+    								Field name to apply the request if
+    								any, the request will be the
+    								following: - restriction-field
+    								=business object ID
+    							</xs:documentation>
+    						</xs:annotation>
+    					</xs:element>
+
+    					<xs:element name="action-param" minOccurs="0"
+    						maxOccurs="unbounded">
+    						<xs:annotation>
+    							<xs:documentation>
+    								Configuration parameter for the
+    								query
+    							</xs:documentation>
+    						</xs:annotation>
+    						<xs:complexType>
+    							<xs:sequence>
+    								<xs:element name="param-field"
+    									type="xs:string">
+    									<xs:annotation>
+    										<xs:documentation>
+    											Put the label name of
+    											the field
+    										</xs:documentation>
+    									</xs:annotation>
+    								</xs:element>
+    								<xs:element name="param-value"
+    									type="xs:string">
+    									<xs:annotation>
+    										<xs:documentation>
+    											Put the value of the
+    											field
+    										</xs:documentation>
+    									</xs:annotation>
+    								</xs:element>
+    							</xs:sequence>
+    						</xs:complexType>
+    					</xs:element>
+    				</xs:sequence>
+    			</xs:complexType>
+    		</xs:element>
+    		<xs:element ref="node" minOccurs="0" maxOccurs="unbounded" />
+    	</xs:sequence>
+    	<xs:attribute name="name" type="xs:string" >
+    		<xs:annotation>
+    			<xs:documentation>
+    				Name given to the node
+    			</xs:documentation>
+    		</xs:annotation>
+    	</xs:attribute>
+    	<xs:attribute name="secuName" type="xs:string" >
+    		<xs:annotation>
+    			<xs:documentation>
+    				Name used for the security, if not used the object name is 
+    				the security Name
+    			</xs:documentation>
+    		</xs:annotation>
+    	</xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="menu">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="node" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:include schemaLocation="../ConfigHeader.xsd" />
+  <xs:element name="vos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="VersionDB">
+          <xs:annotation>
+            <xs:appinfo>
+              <id>ver_id</id>
+              <searchlistformactivate>true</searchlistformactivate>
+            </xs:appinfo>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ver_id" type="java.lang.Long">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <required>true</required>
+                    <length>16</length>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="ver_label" type="java.lang.String">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <required>true</required>
+                    <length>16</length>
+                    <list>true</list>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="ver_version" type="java.lang.Long">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <required>true</required>
+                    <length>16</length>
+                    <list>true</list>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="ver_compatibilite" type="java.lang.Long">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <required>true</required>
+                    <length>16</length>
+                    <list>true</list>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="ver_description" type="java.lang.String">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <required>true</required>
+                    <length>256</length>
+                    <list>true</list>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="ver_date" type="java.sql.Timestamp">
+                <xs:annotation>
+                  <xs:appinfo>
+                    <required>true</required>
+                    <length>10</length>
+                    <list>true</list>
+                  </xs:appinfo>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+
