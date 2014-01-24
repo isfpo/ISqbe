@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee"
+<faces-config version="2.1" xmlns="http://java.sun.com/xml/ns/javaee"
 	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd">
 	<managed-bean>
 		<managed-bean-name>QBEBean</managed-bean-name>
 		<managed-bean-class>ch.inse.qbe.bbean.QBEBean</managed-bean-class>
@@ -18,19 +18,11 @@
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
 
-	<navigation-rule>
-		<navigation-case>
-			<from-outcome>main</from-outcome>
-			<to-view-id>/main.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-
 	<application>
-		<view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
-		<locale-config>
-			<default-locale>fr</default-locale>
-			<supported-locale>fr</supported-locale>
-		</locale-config>
-		<el-resolver>ch.inser.dynajsf.DynamicELResolver</el-resolver>
+	  <locale-config>
+	   <default-locale>fr</default-locale>
+	   <supported-locale>fr</supported-locale>
+	  </locale-config>
+	  <el-resolver>ch.inser.dynajsf.DynamicELResolver</el-resolver>
 	</application>
 </faces-config>

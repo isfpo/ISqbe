@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Représentation métier d'un objet
+ * Reprï¿½sentation mï¿½tier d'un objet
  * 
  * @author frp
  * 
@@ -14,7 +14,7 @@ import java.util.Map;
 public class BusinessObject {
 
     /**
-     * Nom de l'objet métier
+     * Nom de l'objet mï¿½tier
      */
     private String iName;
 
@@ -26,7 +26,7 @@ public class BusinessObject {
     private List<String> iAttributesList = new ArrayList<>();
 
     /**
-     * Référence sur l'objet attribut
+     * Reference sur l'objet attribut
      * 
      * @param aName
      */
@@ -49,5 +49,9 @@ public class BusinessObject {
 
     public List<String> getAttributesList() {
         return iAttributesList;
+    }
+
+    public Map<String, AbstractBusinessAttribute> getBusinessAttributes() {
+        return iBusinessAttributes;
     }
 }

@@ -9,12 +9,12 @@ import ch.inse.qbe.model.BusinessData;
 import ch.inse.qbe.model.BusinessModel;
 import ch.inse.qbe.model.BusinessObject;
 import ch.inse.qbe.model.BusinessRelation;
+import ch.inse.qbe.process.AbstractQueryProcessor;
 
 /**
- * Classe d'accès à un modèle physique
+ * Classe d'acces a un modele physique
  * 
- * T: définition de l'accès au modèle physique (Par exemple DataSource) C: accès
- * à la ressource (Par exemple conncetion
+ * T: definition de l'accas au modale physique (Par exemple DataSource)
  * 
  * @author frp
  * 
@@ -24,7 +24,7 @@ public abstract class AbstractPhysicalModel<T> {
     private T iModelAccess;
 
     /**
-     * Liste des objets contenus dans ce modèle
+     * Liste des objets contenus dans ce modele
      */
     private Map<String, AbstractPhysicalObject> iPhysicalObjects = new HashMap<>();
 
@@ -36,7 +36,12 @@ public abstract class AbstractPhysicalModel<T> {
     private Map<String, AbstractPhysicalRelation> iPhysicalRelations = new HashMap<>();
 
     /**
-     * Constructeur en passant une classe d'accès au modèle
+     * Processeur associe a ce modele
+     */
+    private AbstractQueryProcessor<?> iQueryProcessor;
+
+    /**
+     * Constructeur en passant une classe d'acces au modele
      * 
      * @param modelAccess
      */
@@ -45,14 +50,14 @@ public abstract class AbstractPhysicalModel<T> {
     }
 
     /**
-     * Obtention du modèle métier à partir de l'implémentation des recherches
+     * Obtention du modele metier a partir de l'implementation des recherches
      * d'objets, de champs et de relations
      * 
      * @param aName
      * @return
      */
     public BusinessModel getBusinessModel(String aName) {
-        BusinessModel model = new BusinessModel(aName);
+        BusinessModel model = new BusinessModel(aName, this);
         for (String str : getObjectsList()) {
             BusinessObject bo = new BusinessObject(str);
             model.putBusinessObject(bo);
@@ -67,7 +72,7 @@ public abstract class AbstractPhysicalModel<T> {
     }
 
     /**
-     * Méthode permettant de retourner la classe d'accès au modèle
+     * Methode permettant de retourner la classe d'acces au modele
      * 
      * @return
      */
@@ -86,7 +91,7 @@ public abstract class AbstractPhysicalModel<T> {
     }
 
     /**
-     * Retourne la liste des caractéristique d'un objet
+     * Retourne la liste des caracteristique d'un objet
      * 
      * @param anObjectName
      * @param dataAccess
@@ -97,7 +102,7 @@ public abstract class AbstractPhysicalModel<T> {
     }
 
     /**
-     * Retorune les caractéristiques d'un champ d'un objet
+     * Retorune les caracteristiques d'un champ d'un objet
      * 
      * @param anObjectName
      * @param aFieldName
@@ -108,7 +113,7 @@ public abstract class AbstractPhysicalModel<T> {
             String aFieldName);
 
     /**
-     * Retourne l'ensemble des noms des relations dans le modèle physique
+     * Retourne l'ensemble des noms des relations dans le modele physique
      * 
      * @param dataAccess
      * @return
@@ -118,7 +123,7 @@ public abstract class AbstractPhysicalModel<T> {
     }
 
     /**
-     * Retourne les caractéristiques d'une relation
+     * Retourne les caracteristiques d'une relation
      * 
      * @param aName
      * @param dataAccess
@@ -144,6 +149,14 @@ public abstract class AbstractPhysicalModel<T> {
 
     public Map<String, AbstractPhysicalRelation> getPhysicalRelations() {
         return iPhysicalRelations;
+    }
+
+    public void setQueryProcessor(AbstractQueryProcessor<?> aQueryProcessor) {
+        iQueryProcessor = aQueryProcessor;
+    }
+
+    public AbstractQueryProcessor<?> getQueryProcessor() {
+        return iQueryProcessor;
     }
 
 }

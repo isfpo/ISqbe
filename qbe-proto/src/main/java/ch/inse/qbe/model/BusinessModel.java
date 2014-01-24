@@ -5,8 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import ch.inse.qbe.physical.AbstractPhysicalModel;
+
 /**
- * Modèle métier, contient la référence à des objets et des relations
+ * ModÃ¨le mÃ©tier, contient la rÃ©fÃ©rence Ã  des objets et des relations
  * 
  * @author frp
  * 
@@ -14,12 +16,17 @@ import java.util.Map;
 public class BusinessModel {
 
     /**
-     * Nom du modèle
+     * Nom du modele
      */
     private String iName;
 
     /**
-     * Liste des objets contenus dans ce modèle
+     * Lien sur le modele physique
+     */
+    private AbstractPhysicalModel<?> iPhysicalModel;
+
+    /**
+     * Liste des objets contenus dans ce modele
      */
     private Map<String, BusinessObject> iBusinessObjects = new HashMap<>();
 
@@ -37,8 +44,9 @@ public class BusinessModel {
      */
     private Map<String, BusinessRelation> iObjectRelations = new HashMap<>();
 
-    public BusinessModel(String aName) {
+    public BusinessModel(String aName, AbstractPhysicalModel<?> aPhysicalModel) {
         iName = aName;
+        iPhysicalModel = aPhysicalModel;
     }
 
     public String getName() {
@@ -59,5 +67,9 @@ public class BusinessModel {
 
     public List<BusinessObject> getBuinessList() {
         return new ArrayList<>(iBusinessObjects.values());
+    }
+
+    public AbstractPhysicalModel<?> getPhysicalModel() {
+        return iPhysicalModel;
     }
 }

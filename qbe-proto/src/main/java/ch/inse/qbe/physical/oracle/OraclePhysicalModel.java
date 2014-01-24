@@ -17,9 +17,10 @@ import com.javaunderground.jdbc.StatementFactory;
 import ch.inse.qbe.model.BusinessData;
 import ch.inse.qbe.model.BusinessRelation;
 import ch.inse.qbe.physical.AbstractPhysicalModel;
+import ch.inse.qbe.process.oracle.OracleQueryProcessor;
 
 /**
- * Classe d'accès au modèle physique Oracle
+ * Classe d'acces au modele physique Oracle
  * 
  * @author frp
  * 
@@ -34,6 +35,7 @@ public class OraclePhysicalModel extends AbstractPhysicalModel<DataSource> {
     }
 
     private void initPhysicalModel() {
+        setQueryProcessor(new OracleQueryProcessor(this));
         Connection con = null;
         try {
             con = getModelAccess().getConnection();
@@ -74,7 +76,7 @@ public class OraclePhysicalModel extends AbstractPhysicalModel<DataSource> {
             }
             rs.close();
             ps.close();
-            // SYNONYMS - en évitant les vues et les séquences...
+            // SYNONYMS - en ï¿½vitant les vues et les sï¿½quences...
             StringBuffer sql = new StringBuffer();
             sql.append("select s.table_owner,s.synonym_name from user_synonyms s,user_tab_privs p, all_tables t ");
             sql.append("where s.table_owner=p.owner and ");

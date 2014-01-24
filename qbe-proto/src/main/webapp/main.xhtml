@@ -1,71 +1,122 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:t="http://myfaces.apache.org/tomahawk"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:a4j="http://richfaces.org/a4j"
-    xmlns:rich="http://richfaces.org/rich"
-    xmlns:c="http://java.sun.com/jstl/core"
-    xmlns:isg="http://www.inser.ch/generic"
-    xmlns:isc="http://www.inser.ch/specific">
- 
-    
-		<ui:composition template="templates/overall_template.xhtml" >
-		      		   	       
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>
+	<p:layout fullPage="true">
+		<p:layoutUnit position="north" size="300" header="Top"
+			resizable="true" collapsible="true">
+			<h:form>
+				<p:panelGrid columns="2">
+					<p:commandButton value="Execute"
+						actionListener="#{QBEBean.doExecute}"
+						styleClass="ui-priority-primary"
+						update=":#{p:component('result')}" />
+					<p:outputPanel id="whereClause">
+						<p:editor controls="" value="#{QBEBean.whereClause}"
+							style="width:100%">
+						</p:editor>
+					</p:outputPanel>
+				</p:panelGrid>
+				</h:form>
+		</p:layoutUnit>
+		
+		
+		<p:layoutUnit position="south" size="200" header="Bottom"
+			resizable="true" collapsible="true">
+			<p:dataTable id="result" var="item"
+				value="#{QBEBean.queryResult.datas}">
+				<p:columns value="#{QBEBean.queryResult.columns}" var="column"
+					columnIndexVar="colIndex">
+					<f:facet name="header">  
+                #{column}  
+            </f:facet>    
+            #{item[colIndex]}  
+        </p:columns>
 
-            <!-- ***************** Debut de la page ***************** -->
-		
-            <!-- Contenu du head (en tete de la page html) -->
-            <ui:define name="head">
-            	
-            	
-            	<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
-            	
-                <title>QBE proto</title>
-                
-                
-            </ui:define>
-		
- 		
-			<!-- Contenu du body (corp de la page html) -->
-			<ui:define name="body">
-	            	           
-	           
-	           <a4j:outputPanel layout="block" id="main_bloc" styleClass="main_div main_window">
-			     <a4j:form id="main_form" > 
-			     	
-				     
-				    <!-- Gestion des queues événementiel -->  
-				    <a4j:queue id="suggestQueue" name="suggestQueue" size="1" 
-				    		requestDelay="200" sizeExceededBehavior="fireNext" />
-				     				    
-				    <!-- Description de la page vu par le client -->   				      
-			        <a4j:outputPanel layout="block" id="title_bloc"  >	  
-   						<ui:decorate template="default/main_title.xhtml" />
-			        </a4j:outputPanel>
-			         			        
-			          
-			        <a4j:outputPanel layout="block" id="master_bloc" styleClass="main_master_div main_div">
-			            <ui:decorate template="default/main_master.xhtml" />
-			        </a4j:outputPanel>
-			        
-		          </a4j:form>
-                </a4j:outputPanel>   
-                                      
-	        </ui:define>
-	
-	       <!-- ***************** Fin de la page ***************** -->
-	
-	       <!-- Affichage de tous les beans actifs -->         
-            <ui:define name="master">
-            <a4j:repeat value="#{QBEBean.objectList}" var="obj">
-             <rich:simpleTogglePanel label="#{obj.name}" opened="false">
-             	<a4j:repeat value="#{obj.attributesList}" var="attr">
-             		<t:outputText value="#{attr}"/><br/>
-             	</a4j:repeat>
-             </rich:simpleTogglePanel>
-            </a4j:repeat>
-	        </ui:define>
-		</ui:composition>
-     
+			</p:dataTable>
+		</p:layoutUnit>
+		<p:layoutUnit position="west" size="400" header="Left"
+			resizable="true" collapsible="true">
+			<h:form>
+				<p:outputPanel id="availableTables">
+					<ui:repeat value="#{QBEBean.objectList}" var="obj">
+						<p:panel header="#{obj.name}" collapsed="true" toggleable="true">
+							<f:facet name="actions">
+								<p:commandLink
+									styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"
+									action="#{QBEBean.onTableSelect}"
+									update=":#{p:component('selectedTables')}">
+									<f:setPropertyActionListener
+										target="#{QBEBean.additionalProperty}" value="#{obj}" />
+									<h:outputText styleClass="ui-icon ui-icon-star" />
+								</p:commandLink>
+							</f:facet>
+							<p:dataList value="#{obj.attributesList}" var="attr"
+								itemType="disc">  
+							    #{attr}  							    
+							</p:dataList>
+						</p:panel>
+					</ui:repeat>
+				</p:outputPanel>
+			</h:form>
+		</p:layoutUnit>
+
+
+		<p:layoutUnit position="east" size="400" header="Right"
+			resizable="true" collapsible="true">
+			<p:orderList id="attributeSelected"
+				value="#{QBEBean.attributeSelected}" var="attr"
+				controlsLocation="none" itemLabel="#{attr.name}"
+				itemValue="#{attr.name}" style="width:100%" />
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center">
+			<h:form>
+				<p:outputPanel id="selectedTables">
+					<ui:repeat value="#{QBEBean.objectSelected}" var="obj">
+						<p:panel header="#{obj.name}" collapsed="true" toggleable="true"
+							id="tables">
+							<f:facet name="actions">
+								<p:commandLink
+									styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"
+									action="#{QBEBean.onTableUnselect}"
+									update=":#{p:component('selectedTables')}">
+									<f:setPropertyActionListener
+										target="#{QBEBean.additionalProperty}" value="#{obj}" />
+									<h:outputText styleClass="ui-icon ui-icon-close" />
+								</p:commandLink>
+							</f:facet>
+							<p:dataList id="availableAttr" value="#{obj.attributesList}"
+								var="attr" itemType="disc">
+								<h:outputText value="#{attr}" id="attr" />
+								<p:commandLink
+									styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"
+									action="#{QBEBean.onAttributeWhere}"
+									update=":#{p:component('whereClause')}">
+									<f:setPropertyActionListener
+										target="#{QBEBean.additionalAttrProperty}"
+										value="#{obj.businessAttributes[attr]}" />
+									<h:outputText styleClass="ui-icon ui-icon-arrow-1-s" />
+								</p:commandLink>
+								<p:commandLink
+									styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"
+									action="#{QBEBean.onAttributeSelect}"
+									update=":#{p:component('attributeSelected')}">
+									<f:setPropertyActionListener
+										target="#{QBEBean.additionalAttrProperty}"
+										value="#{obj.businessAttributes[attr]}" />
+									<h:outputText styleClass="ui-icon ui-icon-arrow-1-e" />
+								</p:commandLink>
+							</p:dataList>
+						</p:panel>
+					</ui:repeat>
+				</p:outputPanel>
+			</h:form>
+		</p:layoutUnit>
+	</p:layout>
+</h:body>
 </html>
